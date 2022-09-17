@@ -3,17 +3,17 @@
 {% block title %} Home {% endblock title %}
 
 {% block content %}
-<h1>Ohayou!</h1>
+<h1>Youkoso!</h1>
 
 <h4>Username: {{ user['username'] }} - Email: {{user['email'] }}</h4>
 
-<h5>My favorite colors</h5>
+<h5>Games</h5>
 <ul>
-    {% for color in colors %}
-        {% if color == 'y' %}
-            <li>{{ color.upper() }}</li>
+    {% for game in games %}
+        {% if game == 'Blackjack' %}
+            <li>{{ game.upper() }}</li>
         {% else %}
-            <li>{{ color }}</li>
+            <li>{{ game }}</li>
         {% endif %}
     {% endfor %}
 </ul>

@@ -9,11 +9,13 @@ def index():
         'username': 'justin',
         'email': 'jumanjiro@gmail.com'
     }
-    colors = ['Blackjack', 'Baccarat', 'Roulette', 'Craps', 'Three Card Poker', 'Four Card Poker', "Ultimate Texas Hold'em"]
-    return render_template('index.html', user=user_info, colors=colors)
+    games = ['Blackjack', 'Baccarat', 'Roulette', 'Craps', 'Three Card Poker', 'Four Card Poker', "Ultimate Texas Hold'em"]
+    return render_template('index.html', user=user_info, games=games)
 
 
-@app.route('/signup')
+@app.route('/signup', methods=["GET", "POST"])
 def signup():
     form = SignUpForm()
+    if form.validate_on_submit():
+        print('Form has been validated! Yippy Kai Yay')
     return render_template('signup.html', form=form)

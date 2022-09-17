@@ -5,12 +5,7 @@
 {% block content %}
 <h2 class="text-center">Sign Up Here!</h2>
 
-{{ form }}
-
-{{ form.username }}
-{{ form.password }}
-
-<form>
+<form method="post">
     {{ form.csrf_token }}
     <div class="form-group">
         {{ form.email.label }}
@@ -22,8 +17,8 @@
         {{ form.password.label }}
         {{ form.password(class='form-control', placeholder='Enter Password') }}
 
-        {{ form.confirm-pass.label }}
-        {{ form.confirm-pass(class='form-control', placeholder='Confirm Password') }}
+        {{ form.confirm_pass.label }}
+        {{ form.confirm_pass(class='form-control', placeholder='Confirm Password') }}
 
         {{ form.email.label }}
         {{ form.submit(class='btn-primary w-100 mt-3') }}
