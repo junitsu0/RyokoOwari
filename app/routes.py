@@ -18,4 +18,5 @@ def signup():
     form = SignUpForm()
     if form.validate_on_submit():
         print('Form has been validated! Yippy Kai Yay')
+        print(form.email.data, form.username.data, form.password.data)
     return render_template('signup.html', form=form)
