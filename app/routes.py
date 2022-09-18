@@ -6,13 +6,13 @@ from app.models import User, Post
 
 @app.route('/')
 def index():
-    #this could be a database instead of dictionary
-    user_info = {
-        'username': 'justin',
-        'email': 'jumanjiro@gmail.com'
-    }
-    games = ['Blackjack', 'Baccarat', 'Roulette', 'Craps', 'Three Card Poker', 'Four Card Poker', "Ultimate Texas Hold'em"]
-    return render_template('index.html', user=user_info, games=games)
+    posts = Post.query.all()
+    return render_template('index.html', posts=posts)
+
+@app.route('/my-posts')
+@login_required
+def my_posts():
+    posts = current_user.posts.all()
 
 
 @app.route('/signup', methods=["GET", "POST"])
@@ -66,7 +66,41 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     flash('You have successfully logged out.', 'primary')
+    return redirect(url_for('index'))
+
+@app.route('/posts/<post_id>')
+def view_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('post.html', post=post)
+
+@app.route('/posts/<post_id>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_post(post_id):
+    post_to_edit = Post.query.get_or_404(post_id)
+    if post_to_edit.author != current_user:
+        flash("You do not have permission to edit this post", "danger")
+        return redirect(url_for('view_post', post_id=post_id))
+    form = PostForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        body = form.body.data
+        post_to_edit.update(title=title, body=body)
+        flash(f'{post_to_edit.title} has been updated', 'success')
+        return redirect(url_for('view_post', post_id=post_id))
+
+    return render_template('edit_post.html', post=post_to_edit, form=form)
+
+@app.route('posts/<post_id>/delete')
+@login_required
+def delete_post(post_id):
+    post_to_delete = Post.query.get_or_404(post_id)
+    if post_to_delete.author != current_user:
+        flash("You do not have permission to delete this post", "danger")
+        return redirect(url_for('index'))
+    post_to_delete.delete()
+    flash(f'{post_to_delete.title} has been deleted', 'info')
     return redirect(url_for('index'))

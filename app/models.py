@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 from app import db, login
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -48,4 +49,14 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"<Post {self.id} | {self.title}>"
-# end of the not needed posting =====================
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            if key in {'title', 'body'}:
+                setattr(self, key, value)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+# end of the not needed posting stuff =====================
