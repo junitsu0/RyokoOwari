@@ -90,7 +90,7 @@ def edit_post(post_id):
 
     return render_template('edit_post.html', post=post_to_edit, form=form)
 
-@app.route('posts/<post_id>/delete')
+@app.route('/posts/<post_id>/delete')
 @login_required
 def delete_post(post_id):
     post_to_delete = Post.query.get_or_404(post_id)
