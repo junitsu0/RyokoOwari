@@ -1,6 +1,6 @@
 from app import db, login
 from datetime import datetime
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
@@ -21,12 +21,19 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"<User {self.id} | {self.username}>"
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+        db.session.commit()
     
 @login.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
-# dont need posting =========
+# dont need posting but here it is anyways =========
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
@@ -41,4 +48,4 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"<Post {self.id} | {self.title}>"
-# end dont need posting ======
+# end of the not needed posting =====================
