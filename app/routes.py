@@ -1,18 +1,13 @@
 from app import app
 from flask import render_template, redirect, url_for, flash
-from flask_login import login_user, logout_user, login_required, current_user
 from app.forms import SignUpForm, PostForm, LoginForm
 from app.models import User, Post
+from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route('/')
 def index():
     posts = Post.query.all()
     return render_template('index.html', posts=posts)
-
-@app.route('/my-posts')
-@login_required
-def my_posts():
-    posts = current_user.posts.all()
 
 
 @app.route('/signup', methods=["GET", "POST"])
@@ -65,7 +60,7 @@ def login():
 
     return render_template('login.html', form=form)
 
-@app.route('/logout')
+@app.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
     logout_user()
@@ -73,6 +68,7 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/posts/<post_id>')
+@login_required
 def view_post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post.html', post=post)

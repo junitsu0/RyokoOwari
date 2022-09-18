@@ -9,10 +9,10 @@
     {{ form.csrf_token }}
     <div class="form-group">
         {{ form.title.label }}
-        {{ form.title(class='form-control', placeholder='Enter Title') }}
+        {{ form.title(class='form-control', value=post.title) }}
 
         {{ form.body.label }}
-        {{ form.body(class='form-control', placeholder='Enter Body') }}
+        {{ form.body(class='form-control', value=post.body) }}
 
         {{ form.submit(class='btn btn-primary w-100 mt-3') }}
     </div>
