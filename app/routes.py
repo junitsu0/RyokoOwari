@@ -100,3 +100,8 @@ def delete_post(post_id):
     post_to_delete.delete()
     flash(f'{post_to_delete.title} has been deleted', 'info')
     return redirect(url_for('index'))
+
+@app.route('/sports')
+@login_required
+def view_sports():
+    
