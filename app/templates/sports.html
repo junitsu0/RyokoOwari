@@ -2,4 +2,40 @@
 
 {% block title %} Sports {% endblock title %}
 
+
+{% block content %}
+
+<h2 class="text-center">Find your Odds</h2>
+
+<form method="post">
+    <label for="sport">Choose a Sport:</label>
+
+    <select name="sport" id="sport">
+        <option value="americanfootball_nfl">NFL</option>
+        <option value="MLB">MLB</option>
+        <option value="NHL">NHL</option>
+        <option value="NBA">NBA</option>
+    </select>
+
+    <label for="region">Choose a Region:</label>
+
+    <select name="region" id="region">
+        <option value="us">US</option>
+        <option value="uk">UK</option>
+        <option value="au">AU</option>
+        <option value="eu">EU</option>
+    </select>
+
+    <label for="market">Choose a Market:</label>
+
+    <select name="market" id="market">
+        <option value="h2h">Money Line</option>
+        <option value="spreads">Spread</option>
+        <option value="totals">Totals</option>
+        <option value="outrights">Outrights</option>
+    </select>
+
+    {{ form.submit(class='btn btn-primary w-100 mt-3') }}
+</form>
+
 {% endblock content %}

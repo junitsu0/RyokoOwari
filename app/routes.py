@@ -1,8 +1,10 @@
 from app import app
-from flask import render_template, redirect, url_for, flash
-from app.forms import SignUpForm, PostForm, LoginForm
+from flask import render_template, redirect, url_for, flash, request
+from app.forms import SignUpForm, PostForm, LoginForm, SportsForm
 from app.models import User, Post
 from flask_login import login_user, logout_user, login_required, current_user
+import requests
+import json
 
 @app.route('/')
 def index():
@@ -28,7 +30,6 @@ def signup():
         return redirect(url_for('index'))
     return render_template('signup.html', form=form)
 
-# don't need posting
 @app.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
@@ -41,7 +42,6 @@ def create():
         return redirect(url_for('index'))
 
     return render_template('createpost.html', form=form)
-# end dont need posting
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -101,7 +101,15 @@ def delete_post(post_id):
     flash(f'{post_to_delete.title} has been deleted', 'info')
     return redirect(url_for('index'))
 
-@app.route('/sports')
+@app.route('/sports', methods=['GET', 'POST'])
 @login_required
-def view_sports():
-    
+def sports():
+    if request.method == 'GET':
+        form = SportsForm()
+        return render_template('sports.html', form=form)
+    else:
+        sport = request.form['sport']
+        region = request.form['region']
+        market = request.form['market']
+        r = requests.get('https://api.the-odds-api.com/v4/sports/{}/odds/?apiKey=8444ac66c541b938a6b8da04681a2949&regions={}&markets={}'.format(sport, region, market))
+        return render_template('results.html', r=r.json())

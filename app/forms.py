@@ -20,3 +20,7 @@ class PostForm(FlaskForm):
     title = StringField('Title', validators=[InputRequired()])
     body = StringField('Body', validators=[InputRequired()])
     submit = SubmitField()
+
+class SportsForm(FlaskForm):
+    odds = StringField('Odds', validators=[InputRequired()])
+    submit = SubmitField()
