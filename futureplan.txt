@@ -20,3 +20,6 @@ game/event dates searchable and in results
 
 Input a Bet & see potential win & applicable fees/taxes
 filter for range of values on spreads, payout odds, etc
+
+user page that tracks/displays some number of bets either because they were bet on,
+    have an interest to see it, or want to track it until the wager is favorable enough to take
