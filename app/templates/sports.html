@@ -5,36 +5,88 @@
 
 {% block content %}
 
-<h2 class="text-center">Find your Odds</h2>
+<h2 class="text-center" style="font-family: Cambria">Search for Bets</h2>
 
 <form method="post">
-    <label for="sport">Choose a Sport:</label>
+    <div class="searchlist" style="margin-top: 30px;">
+        <ul>
+            <div class="linechoice" style="margin-bottom: 10px;">
+                <li>
+                    <label for="sport">League:</label>
 
-    <select name="sport" id="sport">
-        <option value="americanfootball_nfl">NFL</option>
-        <option value="MLB">MLB</option>
-        <option value="NHL">NHL</option>
-        <option value="NBA">NBA</option>
-    </select>
-
-    <label for="region">Choose a Region:</label>
-
-    <select name="region" id="region">
-        <option value="us">US</option>
-        <option value="uk">UK</option>
-        <option value="au">AU</option>
-        <option value="eu">EU</option>
-    </select>
-
-    <label for="market">Choose a Market:</label>
-
-    <select name="market" id="market">
-        <option value="h2h">Money Line</option>
-        <option value="spreads">Spread</option>
-        <option value="totals">Totals</option>
-        <option value="outrights">Outrights</option>
-    </select>
-
+                    <select name="sport" id="sport">
+                        <option value="americanfootball_nfl">NFL</option>
+                        <option value="baseball_mlb">MLB</option>
+                        <option value="icehockey_nhl">NHL</option>
+                        <option value="basketball_nba">NBA</option>
+                    </select>
+                </li>
+            </div>
+            <div class="linechoice" style="margin-bottom: 10px;">
+                <li>
+                    <label for="region">Region:</label>
+                    
+                    <select name="region" id="region">
+                        <option value="us">US</option>
+                        <option value="uk">UK</option>
+                        <option value="au">AU</option>
+                        <option value="eu">EU</option>
+                    </select>
+                </li>
+            </div>
+            <div class="linechoice" style="margin-bottom: 10px;">
+                <li>
+                    <label for="market">Wager:</label>
+                
+                    <select name="market" id="market">
+                        <option value="h2h">Money Line</option>
+                        <option value="spreads">Spreads</option>
+                        <option value="totals">Over/Under</option>
+                        <option value="outrights">Outrights</option>
+                    </select>
+                </li>
+            </div>
+            <div class="linechoice" style="margin-bottom: 10px;">
+                <li>
+                    <label for="market">Service:</label>
+                
+                    <select name="market" id="market">
+                        <option value="betmgm">BetMGM</option>
+                        <option value="wynnbet">WynnBET</option>
+                        <option value="fanduel">FanDuel</option>
+                        <option value="draftkings">DraftKings</option>
+                    </select>
+                </li>
+            </div>
+            <div class="linechoice" style="margin-bottom: 10px;">
+                <li>
+                    <label for="market">Game Day:</label>
+                
+                    <select name="market" id="market">
+                        <option value="h2h">Sunday</option>
+                        <option value="spreads">Monday</option>
+                        <option value="totals">Tuesday</option>
+                        <option value="outrights">Wednesday</option>
+                        <option value="spreads">Thursday</option>
+                        <option value="totals">Friday</option>
+                        <option value="outrights">Saturday</option>
+                    </select>
+                </li>
+            </div>
+            <div class="linechoice" style="margin-bottom: 10px;">
+                <li>
+                    <label for="market">Team:</label>
+                
+                    <select name="market" id="market">
+                        <option value="h2h">Money Line</option>
+                        <option value="spreads">Spreads</option>
+                        <option value="totals">Over/Under</option>
+                        <option value="outrights">Outrights</option>
+                    </select>
+                </li>
+            </div>
+        </ul>
+    </div>
     {{ form.submit(class='btn btn-primary w-100 mt-3') }}
 </form>
 

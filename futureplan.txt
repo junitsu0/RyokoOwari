@@ -1,0 +1,22 @@
+Add $$ to database per user
+Track user bets, wins, losses, amounts of bets and totals
+
+vertically align navbar elements (im sure the image aligned them poorly)
+make elements in navbar bigger as well
+Icons under, or adjacent to, the links in the navbar
+
+More drop down filters
+More items per drop down as api allows
+Dynamic? dropdowns maybe
+Dropdowns that will exclude options in other dropdowns that do not apply
+    (so each dropdown would be more specific, and choosing X in the prior will remove N/A options in Y, and so on)
+placeholder for dropdown choice "Choose"
+dropdown choice of "Any"
+color dropdown box (light gray maybe)
+
+Better all around page css layouts and designs
+
+game/event dates searchable and in results
+
+Input a Bet & see potential win & applicable fees/taxes
+filter for range of values on spreads, payout odds, etc
