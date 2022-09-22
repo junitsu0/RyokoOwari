@@ -1,3 +1,4 @@
+from turtle import title
 from app import app
 from flask import render_template, redirect, url_for, flash, request
 from app.forms import SignUpForm, PostForm, LoginForm, SportsForm
@@ -111,5 +112,6 @@ def sports():
         sport = request.form['sport']
         region = request.form['region']
         market = request.form['market']
-        r = requests.get('https://api.the-odds-api.com/v4/sports/{}/odds/?apiKey=8444ac66c541b938a6b8da04681a2949&regions={}&markets={}'.format(sport, region, market))
+        bookmaker = request.form['bookmaker']
+        r = requests.get('https://api.the-odds-api.com/v4/sports/{}/odds/?apiKey=8444ac66c541b938a6b8da04681a2949&regions={}&markets={}&bookmaker={}'.format(sport, region, market, bookmaker))
         return render_template('results.html', r=r.json())
