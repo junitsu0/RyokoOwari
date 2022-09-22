@@ -7,7 +7,41 @@
 
 <h2 class="text-center" style="font-family: Cambria">Search Results</h2>
 
-<h4 class="text-center">{{ r }}</h4>
-
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    </style>
+    <table>
+        <tr>
+            <th>Sport</th>
+            <th>Commence Time</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th>Company</th>
+            <th>Home Price</th>
+            <th>Home Point</th>
+            <th>Away Price</th>
+            <th>Away Point</th>
+        </tr>
+    {% for row in r %}
+    {% for bookmaker in row.bookmakers %}
+    {% for market in bookmaker.markets %}
+        <tr>
+            <td>{{ row.sport_title }}</td>
+            <td>{{ row.commence_time.split("T")[0] }}</td>
+            <td>{{ row.home_team}}</td>
+            <td>{{ row.away_team}}</td>
+            <td>{{ bookmaker.title }}</td>
+            <td>{{ market.outcomes[0].price }}</td>
+            <td>{{ market.outcomes[0].point }}</td>
+            <td>{{ market.outcomes[1].price }}</td>
+            <td>{{ market.outcomes[1].point }}</td>
+        </tr>
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+    </table>
 
 {% endblock content %}
