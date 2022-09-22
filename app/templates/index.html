@@ -6,7 +6,7 @@
 
 <h2 class="text-center" style="font-family: Cambria">The Shelby Parlour</h2>
 {% if current_user.is_authenticated %}
-    <h6 class="text-center">Signed in as: {{ current_user.username }}</h6>
+    <h6 class="text-center">Welcome: {{ current_user.username }}</h6>
 
     {% for post in posts %}
         <div class="card" style="width: 18rem;">

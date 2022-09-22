@@ -9,8 +9,8 @@
 
 <form method="post">
     <div class="searchlist" style="margin-top: 30px;">
-        <ul>
-            <div class="linechoice" style="margin-bottom: 10px;">
+        <ul class="list-unstyled">
+            <div class="text-center" style="margin-bottom: 10px;">
                 <li>
                     <label for="sport">League:</label>
 
@@ -22,7 +22,7 @@
                     </select>
                 </li>
             </div>
-            <div class="linechoice" style="margin-bottom: 10px;">
+            <div class="text-center" style="margin-bottom: 10px;">
                 <li>
                     <label for="region">Region:</label>
                     
@@ -34,7 +34,7 @@
                     </select>
                 </li>
             </div>
-            <div class="linechoice" style="margin-bottom: 10px;">
+            <div class="text-center" style="margin-bottom: 10px;">
                 <li>
                     <label for="market">Wager:</label>
                 
@@ -46,7 +46,7 @@
                     </select>
                 </li>
             </div>
-            <div class="linechoice" style="margin-bottom: 10px;">
+            <div class="text-center" style="margin-bottom: 10px;">
                 <li>
                     <label for="market">Service:</label>
                 
@@ -58,7 +58,7 @@
                     </select>
                 </li>
             </div>
-            <div class="linechoice" style="margin-bottom: 10px;">
+            <!-- <div class="text-center" style="margin-bottom: 10px;">
                 <li>
                     <label for="market">Game Day:</label>
                 
@@ -73,7 +73,7 @@
                     </select>
                 </li>
             </div>
-            <div class="linechoice" style="margin-bottom: 10px;">
+            <div class="text-center" style="margin-bottom: 10px;">
                 <li>
                     <label for="market">Team:</label>
                 
@@ -84,10 +84,12 @@
                         <option value="outrights">Outrights</option>
                     </select>
                 </li>
-            </div>
+            </div> -->
         </ul>
     </div>
-    {{ form.submit(class='btn btn-primary w-100 mt-3') }}
+    <div class="text-center">
+    {{ form.submit(class='btn btn-primary align-center bg-dark w-50 mt-5') }}
+    </div>
 </form>
 
 {% endblock content %}

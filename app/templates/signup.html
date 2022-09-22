@@ -7,7 +7,7 @@
 
 <form method="post">
     {{ form.csrf_token }}
-    <div class="form-group">
+    <div class="form-group" class="text-center">
         {{ form.email.label }}
         {{ form.email(class='form-control', placeholder='Enter Email') }}
 
@@ -20,7 +20,7 @@
         {{ form.confirm_pass.label }}
         {{ form.confirm_pass(class='form-control', placeholder='Confirm Password') }}
        
-        {{ form.submit(class='btn btn-primary w-100 mt-3') }}
+        {{ form.submit(class='btn btn-primary bg-dark w-100 mt-3') }}
     </div>
 </form>
 
