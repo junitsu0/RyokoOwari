@@ -26,21 +26,21 @@
             <th>Away Point</th>
         </tr>
     {% for row in r %}
-    {% for bookmaker in row.bookmakers %}
-    {% for market in bookmaker.markets %}
-        <tr>
-            <td>{{ row.sport_title }}</td>
-            <td>{{ row.commence_time.split("T")[0] }}</td>
-            <td>{{ row.home_team}}</td>
-            <td>{{ row.away_team}}</td>
-            <td>{{ bookmaker.title }}</td>
-            <td>{{ market.outcomes[0].price }}</td>
-            <td>{{ market.outcomes[0].point }}</td>
-            <td>{{ market.outcomes[1].price }}</td>
-            <td>{{ market.outcomes[1].point }}</td>
-        </tr>
-    {% endfor %}
-    {% endfor %}
+        {% for bookmaker in row.bookmakers %}
+            {% for market in bookmaker.markets %}
+                <tr>
+                    <td>{{ row.sport_title }}</td>
+                    <td>{{ row.commence_time.split("T")[0] }}</td>
+                    <td>{{ row.home_team}}</td>
+                    <td>{{ row.away_team}}</td>
+                    <td>{{ bookmaker.title }}</td>
+                    <td>{{ market.outcomes[0].price }}</td>
+                    <td>{{ market.outcomes[0].point }}</td>
+                    <td>{{ market.outcomes[1].price }}</td>
+                    <td>{{ market.outcomes[1].point }}</td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
     {% endfor %}
     </table>
 

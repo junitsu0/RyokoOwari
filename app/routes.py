@@ -112,6 +112,5 @@ def sports():
         sport = request.form['sport']
         region = request.form['region']
         market = request.form['market']
-        bookmaker = request.form['bookmaker']
-        r = requests.get('https://api.the-odds-api.com/v4/sports/{}/odds/?apiKey=8444ac66c541b938a6b8da04681a2949&regions={}&markets={}&bookmaker={}'.format(sport, region, market, bookmaker))
+        r = requests.get('https://api.the-odds-api.com/v4/sports/{}/odds/?apiKey=8444ac66c541b938a6b8da04681a2949&regions={}&markets={}'.format(sport, region, market))
         return render_template('results.html', r=r.json())

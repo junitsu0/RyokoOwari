@@ -33,7 +33,7 @@ class User(db.Model, UserMixin):
 def load_user(user_id):
     return User.query.get(user_id)
 
-# dont need posting but here it is anyways =========
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
@@ -58,4 +58,3 @@ class Post(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-# end of the not needed posting stuff =====================

@@ -13,6 +13,7 @@ Dropdowns that will exclude options in other dropdowns that do not apply
 placeholder for dropdown choice "Choose"
 dropdown choice of "Any"
 color dropdown box (light gray maybe)
+Dropdowns filtering properly
 
 Better all around page css layouts and designs
 
